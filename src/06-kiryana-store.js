@@ -50,22 +50,66 @@
  *   calculateTotal([{price:40,qty:2},...])    // => 160
  *   formatBill([{name:"Atta",price:40,qty:2}]) // => "Atta x 2 = Rs.80"
  */
+
+/*   1. getItemNames(items)
+ *      - .map() se sirf names nikalo
+ *      - Agar items array nahi hai, return []
+ *      - Example: getItemNames([{name:"Atta",price:40,qty:2}]) => ["Atta"]
+ */
+
 export function getItemNames(items) {
   // Your code here
+  if (!Array.isArray(items) || items.length === 0) return [];
+  return items.map((e) => e.name);
 }
+
+/*   2. getAffordableItems(items, maxPrice)
+ *      - .filter() se items nikalo jinka price <= maxPrice
+ *      - Agar items array nahi hai ya maxPrice number nahi hai, return []
+ *      - Example: getAffordableItems([{name:"Atta",price:40},{name:"Ghee",price:500}], 100)
+ *                 => [{name:"Atta",price:40}]
+ */
 
 export function getAffordableItems(items, maxPrice) {
   // Your code here
+  if (
+    !Array.isArray(items) ||
+    items.length === 0 ||
+    typeof maxPrice !== "number"
+  )
+    return [];
+  return items.filter((e) => e.price <= parseInt(maxPrice));
 }
 
 export function calculateTotal(items) {
   // Your code here
+  if (!Array.isArray(items) || items.length === 0) return 0;
+
+  return items.reduce((acc, currObj) => acc + currObj.price * currObj.qty, 0);
 }
+
+/*   4. sortByPrice(items, ascending)
+ *      - [...items].sort() se NEW sorted array return karo (original mat badlo!)
+ *      - ascending = true => low to high, false => high to low
+ *      - Agar items array nahi hai, return []
+ *      - Example: sortByPrice([{name:"Ghee",price:500},{name:"Atta",price:40}], true)
+ *                 => [{name:"Atta",price:40},{name:"Ghee",price:500}]
+ */
 
 export function sortByPrice(items, ascending) {
   // Your code here
+  if (!Array.isArray(items)) return [];
+
+  let newArr = [...items];
+  if (ascending) {
+    return newArr.sort((chota, bara) => chota.price - bara.price);
+  } else return newArr.sort((chota, bara) => bara.price - chota.price);
 }
 
 export function formatBill(items) {
   // Your code here
+  if (!Array.isArray(items) || items.length === 0) return "";
+  return items
+    .map((e) => `${e.name} x ${e.qty} = Rs.${e.price * e.qty}`)
+    .join("\n");
 }
