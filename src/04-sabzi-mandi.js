@@ -77,12 +77,6 @@ export function isInCart(cart, item) {
   return cart.includes(item) ? true : false;
 }
 
-/*   5. mergeCarts(cart1, cart2)
- *      - .concat() se do carts ko combine karo
- *      - Return: new merged array
- *      - Agar koi bhi array nahi hai, usse empty array [] maan lo
- *      - Example: mergeCarts(["tamatar"], ["mirchi", "adrak"]) => ["tamatar", "mirchi", "adrak"]
- */
 export function mergeCarts(cart1, cart2) {
   // Your code here
   if (!Array.isArray(cart1)) cart1 = [];
