@@ -47,22 +47,62 @@
  *   isAnyWaitlisted(passengers)          // => true/false
  *   areAllConfirmed(passengers)          // => true/false
  */
+
 export function findPassenger(passengers, name) {
   // Your code here
+  if (!Array.isArray(passengers) || typeof name !== "string") return undefined;
+
+  return passengers.find((e) => e.name.toLowerCase() === name.toLowerCase());
 }
 
 export function getPassengerIndex(passengers, name) {
   // Your code here
+
+  if (
+    !Array.isArray(passengers) ||
+    passengers.length === 0 ||
+    typeof name !== "string"
+  )
+    return -1;
+  return passengers.findIndex(
+    (e) => e.name.toLowerCase() === name.toLowerCase(),
+  );
 }
 
 export function isAnyWaitlisted(passengers) {
   // Your code here
+  if (!Array.isArray(passengers) || passengers.length === 0) return false;
+
+  return passengers.some((e) => e.status.toLowerCase() === "waitlisted");
 }
 
+/*   4. areAllConfirmed(passengers)
+ *      - .every() se check karo ki SAB passengers "confirmed" hain ya nahi
+ *      - Agar passengers array nahi hai ya empty hai, return false
+ *      - Example: areAllConfirmed([{status:"confirmed"}, {status:"confirmed"}]) => true
+ */
 export function areAllConfirmed(passengers) {
   // Your code here
+
+  if (!Array.isArray(passengers) || passengers.length === 0) return false;
+  return passengers.every((e) => {
+    if ("status" in e) {
+      // checks if the passenger obj has status
+      return e.status.toLowerCase() === "confirmed";
+    } else return false;
+  });
 }
 
+/*   5. getWaitlistedPassengers(passengers)
+ *      - .filter() se sirf "waitlisted" passengers return karo
+ *      - Agar passengers array nahi hai, return []
+ *      - Example: getWaitlistedPassengers([{name:"A",status:"confirmed"},{name:"B",status:"waitlisted"}])
+ *                 => [{name:"B", status:"waitlisted"}]
+ *
+ */
 export function getWaitlistedPassengers(passengers) {
   // Your code here
+  if (!Array.isArray(passengers)) return [];
+
+  return passengers.filter((e) => e.status === "waitlisted");
 }
