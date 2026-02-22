@@ -57,22 +57,46 @@
  *   isValidParcelWeight(2.5)     // => true
  *   isTruthy("")                 // => false
  */
+
 export function getDataType(value) {
   // Your code here
+
+  if (typeof value === "string") return "string";
+  if (typeof value === "number") return "number";
+  if (typeof value === "function") return "function";
+  if (typeof value === "undefined") return "undefined";
+  if (typeof value === "boolean") return "boolean";
+  if (typeof value === "object" && value !== null && !Array.isArray(value))
+    return "object";
+  if (Array.isArray(value)) return "array";
+  if (Number.isNaN(value)) return "NaN";
+  if (value === null) return "null";
 }
 
 export function isValidParcelWeight(weight) {
   // Your code here
+  if (
+    weight <= 0 ||
+    typeof weight === "string" ||
+    !Number.isFinite(weight) ||
+    Number.isNaN(weight)
+  )
+    return false;
+  return true;
 }
 
 export function isWholeNumber(value) {
   // Your code here
+  if (Number.isInteger(value)) return true;
+  return false;
 }
 
 export function isNotANumber(value) {
   // Your code here
+  return Number.isNaN(value);
 }
 
 export function isTruthy(value) {
   // Your code here
+  return Boolean(value);
 }
