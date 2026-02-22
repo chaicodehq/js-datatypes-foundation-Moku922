@@ -86,13 +86,6 @@ export function formatPostcardField(label, value, width) {
   return label.padEnd(width) + ": " + value;
 }
 
-/*   4. isFromState(address, stateCode)
- *      - .endsWith() se check karo ki address kisi state code se end hota hai
- *      - Agar address ya stateCode string nahi hai, return false
- *      - Example: isFromState("Guddu, Lucknow, UP", "UP") => true
- *      - Example: isFromState("Priya, Mumbai, MH", "UP") => false
- */
-
 export function isFromState(address, stateCode) {
   // Your code here
   if (
@@ -103,13 +96,6 @@ export function isFromState(address, stateCode) {
     return false;
   return true;
 }
-
-/*   5. countVowels(message)
- *      - .match(/[aeiouAEIOU]/g) se saare vowels dhundho
- *      - Return: count (match result ki length, ya 0 agar null hai)
- *      - Agar message string nahi hai, return 0
- *      - Example: countVowels("Namaste India") => 6
- */
 
 export function countVowels(message) {
   // Your code here
