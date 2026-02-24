@@ -53,20 +53,46 @@
  */
 export function parcelToJSON(parcel) {
   // Your code here
+  try {
+    // if (typeof parcel === "undefined") throw new Error("obj type is undefine");
+    return JSON.stringify(parcel) ?? "";
+    // return JSON.stringify(parcel);
+  } catch (error) {
+    console.error(error);
+    // return "";
+  }
 }
 
 export function jsonToParcel(jsonString) {
   // Your code here
+  if (typeof jsonString !== "string" || jsonString.trim() === "") return null;
+  try {
+    return JSON.parse(jsonString);
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
 }
 
 export function convertToString(value) {
   // Your code here
+  return String(value);
 }
 
 export function convertToNumber(value) {
   // Your code here
+  return Number(value);
 }
+
+/*   5. stringToChars(str)
+ *      - Array.from() se string ko characters ki array mein convert karo
+ *      - Agar str string nahi hai, return []
+ *      - Example: stringToChars("Dak") => ["D", "a", "k"]
+ *      - Example: stringToChars("") => []
+ */
 
 export function stringToChars(str) {
   // Your code here
+  if (typeof str !== "string") return [];
+  return Array.from(str);
 }
