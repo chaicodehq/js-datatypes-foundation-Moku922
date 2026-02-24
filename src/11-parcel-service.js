@@ -84,13 +84,6 @@ export function convertToNumber(value) {
   return Number(value);
 }
 
-/*   5. stringToChars(str)
- *      - Array.from() se string ko characters ki array mein convert karo
- *      - Agar str string nahi hai, return []
- *      - Example: stringToChars("Dak") => ["D", "a", "k"]
- *      - Example: stringToChars("") => []
- */
-
 export function stringToChars(str) {
   // Your code here
   if (typeof str !== "string") return [];
